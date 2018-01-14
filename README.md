@@ -7,9 +7,13 @@
 	pip install --upgrade google-api-python-client
 	Pip install --upgrade requests
 
+### Clone the code
+Directions on git https://help.github.com/articles/cloning-a-repository/
 
 ### Setup your google account for oauth
-You must have a google account with sheets and gmail
+You must have a google account with sheets and gmail.
+
+URL for Google's directions
 https://developers.google.com/sheets/api/quickstart/pythossn
 
 Directions copied from above google google quickstart:
@@ -30,7 +34,7 @@ Directions copied from above google google quickstart:
 ### Setup google sheets
 ```
 - Create a new google sheet by selecting blank
-- Copy the URL and get the sheet id within it (see example to right) https://docs.google.com/spreadsheets/d/<your sheet id that needs to be copied>/edit#gid=0
+- Name the first sheet deposit
 - Add the following headers in row 1
 	-Amount
 	-Fee
@@ -41,9 +45,10 @@ Directions copied from above google google quickstart:
 	- 0
 	- 2018-01-01 01:00:00
 	- 0
+- Copy the URL and get the sheet id within it (see example to right) https://docs.google.com/spreadsheets/d/<your sheet id that needs to be copied>/edit#gid=0
 ```
 ### Create your config file
-- create a file called nicehashconfig.py
+- create a file called nicehashconfig.py in your cloned working directory
 
 Update with the following fields:
 ```python
@@ -60,3 +65,8 @@ gmailuser = "sendemail@gmail.com"
 
 googlesheetid = "<your copied google sheet id from the step above>"
 ```
+
+### Launch The App
+- Launch command prompt CMD
+- CD to your working directory
+- Type python NiceHashTracker.py
