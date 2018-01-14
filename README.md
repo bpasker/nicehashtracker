@@ -1,10 +1,14 @@
 # nicehashtracker
 
 ### Prerequisites
--Install Python 3x
+- Install Python 3.x.x
+
 	https://www.python.org/downloads/
--Windows run CMD and install the following:
-	pip install --upgrade google-api-python-client
+
+- Windows run CMD and install the following:
+
+	pip install --upgrade google-api-python-clients
+
 	Pip install --upgrade requests
 
 ### Clone the code
