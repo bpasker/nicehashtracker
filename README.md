@@ -43,7 +43,7 @@ Directions copied from above google google quickstart:
 
 ### Create your config file
 - create a file called nicehashconfig.py
-
+```python
 Update with the following fields:
 #!/usr/bin/env python
 
@@ -56,3 +56,4 @@ to = "1231231234@vtext.com"
 gmailuser = "sendemail@gmail.com"
 
 googlesheetid = "<your copied google sheet id from the step above>"
+```
