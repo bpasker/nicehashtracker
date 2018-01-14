@@ -28,6 +28,7 @@ Directions copied from above google google quickstart:
 -Move this file to your working directory and rename it client_secret.json.
 
 ### Setup google sheets
+```
 - Create a new google sheet by selecting blank
 - Copy the URL and get the sheet id within it (see example to right) https://docs.google.com/spreadsheets/d/<your sheet id that needs to be copied>/edit#gid=0
 - Add the following headers in row 1
@@ -40,11 +41,13 @@ Directions copied from above google google quickstart:
 	- 0
 	- 2018-01-01 01:00:00
 	- 0
-
+```
 ### Create your config file
 - create a file called nicehashconfig.py
-```python
+
 Update with the following fields:
+```python
+
 #!/usr/bin/env python
 
 #NiceHash
