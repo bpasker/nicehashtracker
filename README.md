@@ -1,5 +1,8 @@
 # nicehashtracker
 
+### Disclaimer
+This is beta software and comes with no guarantee that your transactions will be track. 
+
 ### Prerequisites
 - Install Python 3.x.x
 
