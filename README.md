@@ -15,7 +15,14 @@ This is beta software and comes with no guarantee that your transactions will be
 	Pip install --upgrade requests
 
 ### Clone the code
-Directions on git https://help.github.com/articles/cloning-a-repository/
+
+- Install gitbash to clone repo. 
+
+	https://github.com/git-for-windows/git/releases/download/v2.15.1.windows.2/Git-2.15.1.2-64-bit.exe
+
+- Launch gitbash and move to the directory you want nicehashtracker to be located. 
+
+	git clone https://github.com/bpasker/nicehashtracker.git
 
 ### Setup your google account for oauth
 You must have a google account with sheets and gmail.
