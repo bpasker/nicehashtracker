@@ -89,13 +89,12 @@ def send_message(service, user_id, message):
   Returns:
     Sent Message.
   """
-  """try:"""
-
-  message = (service.users().messages().send(userId=user_id, body=message).execute())
-  print('Message Id: %s' % message['id'])
-  return message
-  """except HttpError:
-    print('An error occurred: %s' % error)"""
+  try:
+      message = (service.users().messages().send(userId=user_id, body=message).execute())
+      print('Message Id: %s' % message['id'])
+      return message
+  except HttpError:
+    print('An error occurred: %s' % error)
 
 def send_mail(payment):
 
@@ -117,14 +116,14 @@ def main():
         try:
             #Get latest API data from NiceHash
             nicehash_json_string = requests.get('https://api.nicehash.com/api?method=stats.provider&addr='+cfg.nicehashwallet)
-        except RuntimeError:
-            print("Oops!  Can't connect to NiceHash")
+        except requests.exceptions.RequestException as e:
+            print("Oops!  Can't connect to NiceHash: %s" % e)
 
         try:
             #Get latest API data from coindesk
             coindesk_json_string = requests.get('https://api.coindesk.com/v1/bpi/currentprice.json')
-        except RuntimeError:
-            print("Oops!  Can't connect to CoinDesk")
+        except requests.exceptions.RequestException as e:
+            print("Oops!  Can't connect to CoinDesk: %s" % e)
 
         
         #Check if results are blank for NiceHash
@@ -135,7 +134,7 @@ def main():
             nicehash_parsed_json = json.loads(nicehash_json_string.text)
 
 
-        #Check if results are blank for NiceHash
+        #Check if results are blank for Coindesk
         if not coindesk_json_string:
             print("No JSON string for coindesk")
         else:
@@ -147,9 +146,10 @@ def main():
         http = credentials.authorize(httplib2.Http())
         discoveryUrl = ('https://sheets.googleapis.com/$discovery/rest?'
                         'version=v4')
+
         sheetsService = discovery.build('sheets', 'v4', http=http,
                                   discoveryServiceUrl=discoveryUrl)
-
+        
         #Set Googld Docs Spreadsheet ID.
         spreadsheetId = cfg.googlesheetid
 
@@ -157,9 +157,11 @@ def main():
         rangeName = 'Deposit!C2:C'
 
         #Fetch data from google
-        result = sheetsService.spreadsheets().values().get(
-            spreadsheetId=spreadsheetId, range=rangeName).execute()
-
+        try:
+            result = sheetsService.spreadsheets().values().get(
+                spreadsheetId=spreadsheetId, range=rangeName).execute()
+        except RuntimeError:
+            print("Cannot connect to google sheets") 
         #Save results
         sheetsTimeEntries = result.get('values', [])
 
@@ -206,7 +208,7 @@ def main():
         #Update last loop to console        
         print("Sleep until next check")
         print(datetime.now())
-        
+
         #Sleep for 5 minutes and start again
         time.sleep(300)
 if __name__ == '__main__':
