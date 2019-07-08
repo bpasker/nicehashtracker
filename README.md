@@ -10,7 +10,7 @@ This is beta software and comes with no guarantee that your transactions will be
 
 - Windows run CMD and install the following:
 
-	pip install --upgrade google-api-python-clients
+	pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
 
 	Pip install --upgrade requests
 
@@ -18,7 +18,7 @@ This is beta software and comes with no guarantee that your transactions will be
 
 - Install gitbash to clone repo. 
 
-	https://github.com/git-for-windows/git/releases/download/v2.15.1.windows.2/Git-2.15.1.2-64-bit.exe
+	https://central.github.com/deployments/desktop/desktop/latest/win32
 
 - Launch gitbash and move to the directory you want nicehashtracker to be located. 
 
@@ -27,23 +27,9 @@ This is beta software and comes with no guarantee that your transactions will be
 ### Setup your google account for oauth
 You must have a google account with sheets and gmail.
 
-URL for Google's directions
-https://developers.google.com/sheets/api/quickstart/pythossn
+Download the config file in step one and place it in the cloned nicehashtracker path from the link below. 
+https://developers.google.com/sheets/api/quickstart/python
 
-Directions copied from above google google quickstart:
-- Use this wizard to create or select a project in the Google Developers Console and automatically turn on the API. Click Continue, then Go to credentials.
-
-- On the Add credentials to your project page, click the Cancel button.
-
-- Select the Credentials tab, click the Create credentials button and select OAuth client ID.
-
-- Select the application type Other, enter the name "Google Sheets API Quickstart", and click the Create button.
-
-- Click OK to dismiss the resulting dialog.
-
-- Click the file_download (Download JSON) button to the right of the client ID.
-
-- Move this file to your working directory and rename it client_secret.json.
 
 ### Setup google sheets
 ```
@@ -70,7 +56,7 @@ Update with the following fields:
 #!/usr/bin/env python
 
 #NiceHash
-nicehashwallet = "<Your NiceHash wallet ID>""
+nicehashwallet = "<Your NiceHash wallet ID>"
 
 #Text Message
 senderemail  = "sendemail@gmail.com"
