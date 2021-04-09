@@ -23,7 +23,7 @@ import base64
 
 # If modifying these scopes, delete your previously saved credentials
 # at ~/.credentials/sheets.googleapis.com-python-quickstart.json
-SCOPES = 'https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/gmail.send'
+SCOPES = ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/gmail.send']
 CLIENT_SECRET_FILE = 'client_secret.json'
 APPLICATION_NAME = 'NiceHashTracker'
 
@@ -49,6 +49,7 @@ def get_credentials():
     # If there are no (valid) credentials available, let the user log in.
     if not creds or not creds.valid:
         if creds and creds.expired and creds.refresh_token:
+            creds._scopes = SCOPES
             creds.refresh(Request())
         else:
             flow = InstalledAppFlow.from_client_secrets_file(
